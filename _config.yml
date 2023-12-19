@@ -1,1 +1,5 @@
-theme: minima
+title: 无名
+description: 一个普通的博客
+show_downloads: false
+google_analytics:
+theme: jekyll-theme-hacker
