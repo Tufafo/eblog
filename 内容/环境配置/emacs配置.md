@@ -6,6 +6,20 @@ date: 2023-12-19
 
 # <center>emacs29配置</center>
 
+<center>
+<pre class="mermaid">
+mindmap
+	root((Emacs))
+		Dashboard
+		valign
+		vertico
+		pyim
+		dracula
+		treemacs
+		else
+</pre>
+</center>
+
 ## emacs简介
 
 emacs是一个可利用elisp内置语言和elpa仓库进行自定义扩展的文本编辑器。
@@ -19,21 +33,9 @@ emacs是一个可利用elisp内置语言和elpa仓库进行自定义扩展的文
 ## 配置说明
 
 本配置用于说明一些常用的emacs配置，emacs版本， snap-emacs-29 。
-emacs配置文件位于 `~/.emaca.d/init.el` 或 `~/.emacs` 中
+emacs配置文件位于 `~/.emaca.d/init.el` 或 `~/.emacs` 中。
 
-图：
 
-<pre class="mermaid">
-mindmap
-	root((Emacs))
-		Dashboard
-		valign
-		vertico
-		pyim
-		dracula
-		treemacs
-		else
-</pre>
 
 
 ### Dashboard
