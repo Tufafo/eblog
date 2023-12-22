@@ -1,0 +1,194 @@
+---
+layout: default
+title: lisp基础语法
+date: 2023-12-20
+---
+
+# <center>lisp基础语法</center>
+
+## 基础操作语法表
+
+| Grammer | 语法   | 标识  | 功能                               |
+|---------|--------|-------|------------------------------------|
+| car     | 首项   | ri    | 选取列表首项                       |
+| cdr     | 非首项 | cori  | 选取列表非首项                     |
+| eq      | 相等   | fos   | 判断元素是否相等                   |
+| cond    | 条件   | pim   | 条件分支                           |
+| atom    | 原子   | pit   | 是否为叶节点(不可分割、组合的原子) |
+| quote   | 引用   | damos | 为符号增加指向自身的引用           |
+| eval    | 执行   | lakiv | 返回符号的相邻引用值               |
+| cons    | 连接   | las   | 连接对象                           |
+| set     | 约定   | loy   | 设置符号指针                       |
+
+
+## 简介
+
+()
+
+以下是lisp语言的基本形式。
+
+```emacs-lisp
+(symbol-1 symbol-2 ...)
+```
+
+每一个符号都可以展开为基本形式，或者和其它符号构成新的表达式，从而形成嵌套结构。
+
+例如：
+
+```emacs-lisp
+(symbol-1 (symbol-2 symbol-3) symbol-4)
+```
+
+如果我们用 `symbol-5` 指向 `(symbol-3 variable-4)` 这个整体，那么上述表达等价于：
+
+```emacs-lisp
+(symbol-1 symbol-5 symbol-4)
+```
+
+而如果我们用 `symbol-6` 指向 `(symbol-1 symbol-5 symbol-6)` 这个整体，那么上述表达等价于：
+
+```emacs-lisp
+symbol-6
+```
+
+如上所示，lisp程序的执行过程可以视为不断从里向外用新的符号替换原有表达式的过程。
+
+只不过，一般情况下，第一个符号一般用于方法和函数的描述。
+
+## 举例
+
+lisp程序的执行过程类似于上述简化过程，例如：
+
+```emacs-lisp
+(+ (- 3 2) 5)
+```
+
+`1` 等价于 `(- 3 2)`，进行替换得：
+
+```emacs-lisp
+(+ 1 5)
+```
+
+`6` 等价于 `(+ 1 5)`，进行替换得：
+
+```emacs-lisp
+6
+```
+
+所以，初始代码指向了 `6` 这个符号。
+
+## 一般化
+
+`set` 是用于规定符号指向关系的基础函数。
+
+我们可以用 `set` 或 `约定` 关键字来设置一种替换过程，来将举例内容一般化。
+
+首先，我们约定：`f1` 指向 `(cons 'c nil)`，`f2` 指向 `(cons 'a (cons 'b (eval f1)))`， `f3` 指向 `(cons 'd (eval f2))`：
+```emacs-lisp
+(set 'f1 '(cons 'c nil))
+(set 'f2 '(cons 'a (cons 'b f1)))
+(set 'f3 '(cons 'd (eval f2)))
+```
+
+现在我们约定另外两段代码：
+
+```emacs-lisp
+(set 'F2 '(cons 'a (cons 'b (cons 'c nil)))
+(set 'F3 '(cons 'd (cons 'a (cons 'b (cons 'c nil)))))
+```
+
+最后，我们将F3进一步一般化：
+
+```emacs-lisp
+(set 'fun3 (funcall (lambda (a b c d) (cons d (cons a (cons b (cons c nil)))) 'a 'b 'c 'd)))
+```
+
+
+
+分别执行f3 F3 f2 F2，得到结果：
+
+| 执行符号 | 执行结果  |
+|----------|-----------|
+| f3, F3   | (d a b c) |
+| f2, F2   | (a b c)          |
+
+
+而其中F3的执行等价于：
+
+```emacs-lisp
+(fun3)
+```
+
+以F3的执行过程为例，我们可以把F3的执行过程理解为：
+
+
+步骤一：
+
+<center>
+<pre class="mermaid">
+graph TD
+F1("F1: (cons 'c nil)")--执行-->F1_result("'(c)")
+</pre>
+</center>
+
+步骤二：
+
+<center>
+<pre class="mermaid">
+graph TD
+F2("F2: (cons 'a (cons 'b '(c))")--执行-->F2_result("'(a b c)")
+</pre>
+</center>
+
+步骤三：
+
+<center>
+<pre class="mermaid">
+graph TD
+F3("F3: (cons 'd '(a b c)")--执行-->F2_result("'(d a b c)")
+</pre>
+</center>
+
+
+如上所示，lisp 语言由三种元素组成：quote，eval，symbol。
+
+
+只有一种对象，symbol。
+
+
+<center>
+<pre class="mermaid">
+graph LR
+	A(var-a)
+</pre>
+</center>
+
+```emacs-lisp
+(set 'Hello-world! var-a)
+```
+
+<center>
+<pre class="mermaid">
+graph LR
+	A(var-a)
+	B(var-a)---->C(Hello-world!)
+</pre>
+</center>
+
+
+## 一切都是列表
+
+## 封装与组合
+
+
+
+
+## 参考
+
+[中文维基：lisp](https://zh.wikipedia.org/wiki/LISP)
+
+
+<script type="module">
+	import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+	mermaid.initialize({ startOnLoad: true });
+</script>
