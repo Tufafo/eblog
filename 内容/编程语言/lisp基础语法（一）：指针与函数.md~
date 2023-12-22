@@ -207,8 +207,7 @@ b-->c
 
 <center>
 <pre class="mermaid">
-graph LR
-A(x)-reference--->B("123123")
+A(x)-->B("123123")
 </pre>
 </center>
 
@@ -534,7 +533,7 @@ elisp语言提供了两个基本操作来减少这些工作量：
 ;;plus-one
 (lambda (x) (+ 1 x))
 ;;sum-abc
-(lambda (a b c) (+ (plus-one a) (plus-one b) (plus-one c)))
+(lambda (a b c) (+ (plus-one a) (plus-one b) (plus-one c))))
 ```
 这段代码存在两个错误，第一，lambda函数是无名函数，如果不设置指针指向它，是无法通过符号调用的，所以，函数 `plus-one` 需要增加 `set` 语句才能完成定义。第二，和基本操作或者 `defun` 可以直接作为前缀表达式的首项调用函数不同，通过 `set` 定义的 `lambda` 需要利用 `funcall` 才能进行调用。所以，上述代码应该改为：
 
