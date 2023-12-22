@@ -208,7 +208,7 @@ b-->c
 <center>
 <pre class="mermaid">
 graph LR
-A(x)-reference--->B("123123")
+A(x)--reference-->B("123123")
 </pre>
 </center>
 
