@@ -12,29 +12,35 @@ mindmap
     root(lisp基本语法)
         指针
             set
-            quote
+            funcall
             eval
         函数
             lambda
             funcall
-            defun
+            set
         else
 </pre>
 </center>
 
 ## 基础操作语法表
 
-| Grammer | 语法   | 标识  | 功能                               |
-|---------|--------|-------|------------------------------------|
-| car     | 首项   | ri    | 选取列表首项                       |
-| cdr     | 非首项 | cori  | 选取列表非首项                     |
-| eq      | 相等   | fos   | 判断元素是否相等                   |
-| cond    | 条件   | pim   | 条件分支                           |
-| atom    | 原子   | pit   | 是否为叶节点(不可分割、组合的原子) |
-| quote   | 引用   | damos | 为符号增加指向自身的引用           |
-| eval    | 执行   | lakiv | 返回符号的相邻引用值               |
-| cons    | 连接   | rif   | 连接对象                           |
-| set     | 约定   | loy   | 设置符号指针                       |
+
+| Grammer | 语法   | 标识 | 功能                               |
+|---------|--------|------|------------------------------------|
+| car     | 首项   | gin  | 选取列表首项                       |
+| cdr     | 非首项 | div  | 选取列表非首项                     |
+| eq      | 相等   | fos  | 判断元素是否相等                   |
+| cond    | 条件   | seg  | 条件分支                           |
+| atom    | 原子   | voz  | 是否为叶节点(不可分割、组合的原子) |
+| quote   | 引用   | kig  | 为符号增加指向自身的引用           |
+| eval    | 执行   | kiv  | 返回符号的相邻引用值               |
+| cons    | 连接   | las  | 连接对象                           |
+| set     | 约定   | giz  | 设置符号指针                       |
+| lambda  |        | ted  |                                    |
+| funcall |        | fip  |                                    |
+| siv     |        | load     |                                    |
+
+
 
 
 ## 简介
@@ -207,7 +213,8 @@ b-->c
 
 <center>
 <pre class="mermaid">
-A(x)-->B("123123")
+graph LR
+A(x)--reference-->B("123123")
 </pre>
 </center>
 
@@ -533,7 +540,7 @@ elisp语言提供了两个基本操作来减少这些工作量：
 ;;plus-one
 (lambda (x) (+ 1 x))
 ;;sum-abc
-(lambda (a b c) (+ (plus-one a) (plus-one b) (plus-one c))))
+(lambda (a b c) (+ (plus-one a) (plus-one b) (plus-one c)))
 ```
 这段代码存在两个错误，第一，lambda函数是无名函数，如果不设置指针指向它，是无法通过符号调用的，所以，函数 `plus-one` 需要增加 `set` 语句才能完成定义。第二，和基本操作或者 `defun` 可以直接作为前缀表达式的首项调用函数不同，通过 `set` 定义的 `lambda` 需要利用 `funcall` 才能进行调用。所以，上述代码应该改为：
 

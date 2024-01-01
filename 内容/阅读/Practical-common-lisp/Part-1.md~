@@ -1,45 +1,28 @@
 ---
 layout: default
+title: Practical-Common-Lisp: Part-1
+date: 2024-01-01
 ---
 
+## Intro
 
-# 简介
-
-
-没有名称的博客，记录一些简单的编程经验。
-
-
-# 索引
-
-
-### 环境配置
-
-[shadowsocks配置](./内容/环境配置/shadowsocks配置.html)
-
-[trilium配置](./内容/环境配置/trilium配置.html)
-
-[emacs配置](./内容/环境配置/emacs配置.html)
-
-[clojure配置](./内容/环境配置/clojure配置.html)
-
-### 编程语言
-
-[lisp基础语法（一）：指针与函数](./内容/编程语言/lisp基础语法（一）：指针与函数.html)
-
-[lisp基础语法（二）：列表](./内容/编程语言/lisp基础语法（二）：列表.html)
-
-### 使用说明
-
-[markdown说明](./内容/使用说明/markdown.html)
+<center>
+<pre class="mermaid">
+mindmap
+Introduction
+ Lisp Road
+  Father
+   1980s
+   Fortran vs Lisp
+ Author
+  Java vs lisp
+</pre>
+</center>
 
 
-### 阅读
+## 参考
 
-[Practical common lisp: Part-1](./内容/阅读/Practical-common-lisp/Part-1.html)
-
-
-
-
+- Peter Seibel: Pratical common lisp
 
 
 <script type="module">
