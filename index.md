@@ -28,6 +28,8 @@ layout: default
 
 [lisp基础语法（二）：列表](./内容/编程语言/lisp基础语法（二）：列表.html)
 
+[lisp基础语法（三）：主语](./内容/编程语言/lisp基础语法（三）：主语.html)
+
 ### 使用说明
 
 [markdown说明](./内容/使用说明/markdown.html)
