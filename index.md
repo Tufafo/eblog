@@ -22,6 +22,8 @@ layout: default
 
 [clojure配置](./内容/环境配置/clojure配置.html)
 
+[termux install ubuntu](./内容/环境配置/termux-install-ubuntu.html)
+
 ### 编程语言
 
 [lisp基础语法（一）：指针与函数](./内容/编程语言/lisp基础语法（一）：指针与函数.html)
@@ -39,8 +41,7 @@ layout: default
 
 [Practical common lisp: Part-1](./内容/阅读/Practical-common-lisp/Part-1.html)
 
-
-
+[ZTD内容概览](./内容/ZTD/内容概览.html)
 
 
 
